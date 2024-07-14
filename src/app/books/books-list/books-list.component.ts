@@ -114,6 +114,7 @@ onScroll() {
     this.filterBooksTitles = this.booksTitles.filter((titleBook) =>
       titleBook.toLocaleLowerCase().includes(filterBy)
     );
+
   }
 
 
