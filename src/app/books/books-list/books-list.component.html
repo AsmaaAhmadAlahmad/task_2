@@ -1,0 +1,78 @@
+<div class="container">
+  <input
+  type="text"
+  class=""
+  placeholder="Search for a book"
+  [(ngModel)]="keyword"
+/>
+  <div cdkDropListGroup class="example-group">
+
+    <div class="example-container mt-3">
+
+      <div
+        cdkDropList
+        [cdkDropListData]="filterBooksTitles"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of filterBooksTitles" class="example-box" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+    </div>
+
+
+    <div class="example-container">
+      <h4 class="m-2">Selected Books</h4>
+      <div
+        cdkDropList
+        [cdkDropListData]="selectedBooks"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div *ngFor="let item of selectedBooks" class="example-box" cdkDrag>
+          <span>
+            {{ item }}
+            <i
+              class="fa fa-times"
+              aria-hidden="true"
+              (click)="removeBook(item)"
+            ></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h4 class="m-2">List preview</h4>
+      <div
+        cdkDropList
+        [cdkDropListData]="selectedBooks"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <p>
+          Discover new worlds and ideas with our curated selection of
+            suggested reads!
+        </p>
+        <div *ngFor="let item of selectedBooks" class="example-box" cdkDrag>
+          <span>
+            {{ item }}
+          </span>
+        </div>
+      </div>
+      <div class="color-picker">
+        <div class="color-circle" style="background-color: #E6CA99;" (click)="changeColor('#E6CA99')"></div>
+        <div class="color-circle" style="background-color: #D4E5F5;" (click)="changeColor('#D4E5F5')"></div>
+        <div class="color-circle" style="background-color: #EEC6C7;" (click)="changeColor('#EEC6C7')"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="text-center" *ngIf="loadingForSpinner">
+    <app-spinner></app-spinner>
+  </div>
+<!--  -->
+</div>
